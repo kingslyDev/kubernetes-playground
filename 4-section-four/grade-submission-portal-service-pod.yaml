@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: grade-submission-portal
+  namespace: grade-submission
+spec:
+  type: NodePort # Menentukan tipe NodePort
+  selector:
+    app.kubernetes.io/instance: grade-submission-portal
+  ports:
+    - port: 5001 # Port Service yang digunakan untuk akses internal
+      targetPort: 5001 # Port di dalam pod (container) tempat aplikasi mendengarkan
+      nodePort: 32000 # NodePort yang ditentukan secara eksplisit
